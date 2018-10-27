@@ -12,17 +12,36 @@ function init() {
                if(parent){
                    parent.removeChild(element);
                }
-            });*/
+            });
             element.addEventListener("click", function () {
                 console.log(this);
                 let parent = this.parentNode;
                 if (parent) {
                     parent.removeChild(this);
                 }
-            });
+            });*/
             // Añadir un boton para marcar de finalizado
+            var done = document.createElement("input");
+            done.type = "checkbox";
+            done.addEventListener('change', function () {
+                if (this.checked) {
+                    element.style.textDecoration = "line-through";
+                } else {
+                    element.style.textDecoration = "none";
+                }
+            });
+            element.appendChild(done);
             // Elmine de la lista
-
+            var del = document.createElement("input");
+            del.type = "button";
+            del.value = "Borrar";
+            del.addEventListener("click", function () {
+                let parent = element.parentNode;
+                if (parent) {
+                    parent.removeChild(element);
+                }
+            });
+            element.appendChild(del);
             if (priority) {
                 this.listTask.unshift({
                     element,
